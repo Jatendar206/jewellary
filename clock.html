@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: opx;
+        box-sizing: border-box;
+
+    }
+
+    body {
+        background-color: rgb(223, 201, 201);
+    }
+
+    .Time {
+        width: 450px;
+        height: 180px;
+        /* color: white; */
+        background-color: rgb(106, 123, 123);
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 20px;
+        margin: 200px auto;
+        box-shadow: 3px 3px 10px rgb(127, 127, 184), -3px -3px 10px rgb(191, 191, 63);
+        border-radius: 40px 20px 40px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+</style>
+
+<body>
+    <div class="Time">
+        <h3 id="Hours"> H :</h3>:
+        <h3 id="Minutes">M :</h3>:
+        <h3 id="Seconds">S :</h3>
+        <h4 id="ampm">.</h4>
+    </div>
+
+    <script>
+        function Time() {
+            var seconds = document.querySelector("#Seconds");
+            var minutes = document.querySelector("#Minutes");
+            var hours = document.querySelector("#Hours");
+            var aa = document.querySelector("#ampm");
+
+            var d = new Date();
+            var h = d.getHours();
+            var m = d.getMinutes();
+            var s = d.getSeconds();
+            var ampm;
+            if (h > 12) {
+                ampm = "PM";
+            } else {
+                ampm = "AM";
+            }
+
+            if (h > 12) {
+                h = h - 12;
+            }
+
+            if (h < 10) {
+                h = "0" + h;
+            }
+            if (m < 10) {
+                m = "0" + m;
+            }
+            if (s < 10) {
+                s = "0" + s;
+            }
+
+
+
+            aa.innerHTML = ampm;
+            seconds.innerHTML = s;
+            hours.innerHTML = h;
+            minutes.innerHTML = m;
+
+        }
+
+        setInterval(Time, 1000)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: rgb(136, 159, 172);
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-evenly;
+      /* margin: 2px;
+        padding: 0px; */
+      /* border-radius: 25px; */
+      background-color: rgb(35, 37, 38);
+      position: fixed;
+      width: 100%;
+      z-index: 15;
+    }
+
+    .child ul {
+      display: flex;
+      z-index: 1500px;
+      align-items: center;
+    }
+
+    .child ul li {
+      list-style: none;
+      padding: 10px;
+      margin: 15px;
+      z-index: 1500px;
+
+      font-family: Arial, Helvetica, sans-serif;
+      /* color: white; */
+      /* border: 1px solid black; */
+      /* border-radius: 20px; */
+      /* background-color: rgb(130, 117, 63); */
+    }
+
+    .child ul li:hover {
+      background-color: rgb(112, 167, 128);
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 1s;
+      color: rgb(50, 33, 33);
+    }
+
+
+    .child ul li a {
+      text-decoration: none;
+      font-size: 16px;
+      color: white;
+    }
+
+    h2 {
+      padding-top: 22px;
+      color: white;
+      /* padding-bottom: 20px; */
+      color: rgb(162, 192, 192);
+    }
+
+    h2:hover {
+      /* background-color: rgb(223, 40, 40);S */
+      cursor: pointer;
+      /* border-radius: 10px;/ */
+      transition: all 2s;
+      /* padding-bottom: 34px; */
+    }
+
+    .search-item form {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .search-item input {
+      padding: 0.5rem;
+      font-size: 14px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    .search-item button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: cornflowerblue;
+      color: white;
+      font-size: 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .search-item button:hover {
+      background-color: darkslategray;
+    }
+    .child ul li.search-item:hover {
+      background-color: transparent; /* No background change */
+      border-radius: 0; /* Remove any rounding */
+      cursor: default; /* No pointer cursor */
+      transition: none; /* Disable transition effects */
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      background-color: white;
+      height: 3px;
+      width: 25px;
+      margin: 3px 0;
+    }
+    @media (max-width: 768px) {
+      .child {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background-color: rgb(35, 37, 38);
+        top: 100%;
+        right: 0;
+        width: 100%;
+        padding: 1rem;
+      }
+
+      .child ul {
+        flex-direction: column;
+      }
+
+      .child ul li {
+        margin: 0.5rem 0;
+      }
+      .child ul li.search-item {
+        display: flex;
+        width: 100%;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .menu-active .child {
+        display: flex;
+      }
+      .child .search {
+        margin-top: 1rem;
+        width: 100%;
+      }
+
+      .search-item input {
+        width: calc(100% - 70px);
+      }
+
+      .search-item button {
+        width: 60px;
+        text-align: center;
+      }
+    }
+    .di {
+      width: 100%;
+      height: 40rem;
+      background-image: url("https://images.pexels.com/photos/248077/pexels-photo-248077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      background-repeat: no-repeat;
+    }
+
+    h4 {
+      color: rgb(45, 38, 38);
+      font-size: 23px;
+    }
+
+    .di button {
+      /* padding: 40px; */
+      padding: 12px;
+      border-radius: 40px;
+      border: none;
+      /* background-color: rgb(216, 143, 112); */
+      background-color: rgb(42, 42, 125);
+      font-size: 15px;
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-weight: bold;
+      font-style: oblique;
+      border: none;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .main {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 10px;
+      gap: 50px;
+    }
+
+    .first {
+      background-color: #ddd;
+      border: 1px solid green;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      width: 250px;
+      transition: 0.4s;
+    }
+
+    .first img {
+      max-width: 100%;
+      border-radius: 10px;
+      opacity: 0.7;
+    }
+
+    .first h3 {
+      font-size: 18px;
+      margin: 10px;
+    }
+
+    .first p {
+      font-size: 15px;
+      margin: 0px;
+      color: rgb(37, 49, 49);
+    }
+
+    .arc {
+      background-color: rgba(219, 143, 3, 0.808);
+      /* font: 500; */
+      border: none;
+      padding: 8px;
+      margin: 7px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      font-family: poppins;
+      box-shadow: 3px 3px 8px rgb(69, 49, 49), -3px -3px 8px rgb(49, 169, 185);
+    }
+
+    .sis {
+      background-color: rgba(47, 124, 119, 0.808);
+      font: 500;
+      border: none;
+      padding: 8px;
+      margin: 7px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      font-family: poppins;
+      margin-bottom: 10px;
+      box-shadow: 3px 3px 8px rgb(69, 49, 49), -3px -3px 8px rgb(49, 169, 185);
+    }
+
+    .first:hover {
+      transform: scale(0.9);
+    }
+
+    .first button:active {
+      transform: scale(0.95);
+      background-color: darkgrey;
+    }
+
+    .first button:hover {
+      background-color: rgb(14, 12, 12);
+      color: white;
+    }
+
+    .productlook {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 20px;
+      gap: 50px;
+    }
+
+    .product {
+      background-color: #ddd;
+      border: 1px solid green;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      width: 250px;
+      transition: 0.4s;
+    }
+
+    .product button:active {
+      transform: scale(0.95);
+      background-color: rgb(112, 84, 84);
+    }
+
+    .product button:hover {
+      background-color: rgb(14, 12, 12);
+      color: white;
+    }
+
+    .product:hover {
+      transform: scale(0.9);
+    }
+
+    .product img {
+      max-width: 100%;
+      border-radius: 10px;
+      /* opacity: 0.7; */
+    }
+
+    .product p {
+      font-size: 15px;
+      margin: 0px;
+      color: rgb(37, 49, 49);
+    }
+
+    /* img{
+        transition: 0.3s;
+    } */
+    /* 
+    img:hover{
+        transform: scale(1.1);
+
+    } */
+
+    .product h3 {
+      font-size: 18px;
+      margin: 10px;
+    }
+  </style>
+
+  <body>
+    <div class="container">
+      <div class="pen">
+        <h2>JEWELLRY</h2>
+      </div>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="child">
+        <ul>
+          <li><a href="clock.html">Home</a></li>
+          <li><a href="analogclock.html">Poducts</a></li>
+          <li><a href="design.html">Contact</a></li>
+          <li><a href="any.html">Login</a></li>
+          <li><a href="more.html">Sign Up</a></li>
+          <li class="search-item">
+            <form>
+              <input type="search" placeholder="Search" />
+              <button type="submit">Go</button>
+            </form>
+          </li>
+        </ul>
+      </div>
+      <!-- <div class="search">
+        <form>
+          <input type="Search" placeholder="Seach" />
+          <button type="submit">Go</button>
+        </form>
+      </div> -->
+    </div>
+    <hr style="color: burlywood" />
+    <div class="di">
+      <h4>Jewelry is looking best every girl and women.</h4>
+      <a href="#mainSection">
+
+        <button type="submit"  >Shop Now</button>
+      </a>
+    </div>
+    <br />
+    <h1>Our Timeless Collection</h1>
+    <br />
+    <div class="main" id="mainSection">
+      <div class="first">
+        <img
+          src="https://img.freepik.com/free-psd/stunning-sapphire-brooch-jewel-exquisite-craftsmanship_191095-85879.jpg?ga=GA1.1.622351389.1724240624&semt=ais_hybrid"
+          alt=""
+        />
+        <h3>Ring</h3>
+        <p>200</p>
+        <button class="arc" type="submit">Add to Cart</button> <br />
+        <button class="sis" type="submit">Quick View</button>
+      </div>
+      <div class="first">
+        <img
+          src="https://img.freepik.com/free-photo/gold-ring_1203-2739.jpg?ga=GA1.1.622351389.1724240624&semt=ais_hybrid"
+          alt=""
+        />
+        <h3>Neclace</h3>
+        <p>300</p>
+        <button class="arc" type="submit">Add to Cart</button> <br />
+        <button class="sis" type="submit">Quick View</button>
+      </div>
+      <div class="first">
+        <img
+          src="https://img.freepik.com/premium-psd/brooch-isolated-transparent-background_943194-9951.jpg?ga=GA1.1.622351389.1724240624&semt=ais_hybrid"
+          alt=""
+        />
+        <h3>Ring</h3>
+        <p>400</p>
+        <button class="arc" type="submit">Add to Cart</button> <br />
+        <button class="sis" type="submit">Quick View</button>
+      </div>
+    </div>
+
+    <div class="productlook">
+      <div class="product">
+        <img
+          src="https://static.wixstatic.com/media/7c895b_3e71c03fe3434dbabae8937cd71fe453~mv2.jpeg/v1/fill/w_342,h_342,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/7c895b_3e71c03fe3434dbabae8937cd71fe453~mv2.jpeg"
+          alt=""
+        />
+        <h3>Silver Filigree Earing</h3>
+        <p>200</p>
+        <button class="arc" type="submit">Add to Cart</button> <br />
+        <button class="sis" type="submit">Quick View</button>
+      </div>
+      <div class="product">
+        <img
+          src="https://static.wixstatic.com/media/7c895b_c610568f809548e6b0bb9384871c61f3~mv2.jpeg/v1/fill/w_342,h_342,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/7c895b_c610568f809548e6b0bb9384871c61f3~mv2.jpeg"
+          alt=""
+        />
+        <h3>Pearl Bracelt</h3>
+        <p>300</p>
+        <button class="arc" type="submit">Add to Cart</button><br />
+        <button class="sis" type="submit">Quick View</button>
+      </div>
+      <div class="product">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREOvtBohr7ikxINOMTvXHek2IBRhwnLlMuJg&s"
+          alt=""
+        />
+        <h3>Bangles</h3>
+        <p>400</p>
+        <button class="arc" type="submit">Add to Cart</button><br />
+        <button class="sis" type="submit">Quick View</button>
+      </div>
+    </div>
+    <h1>Earing</h1>
+    <div class="productlook">
+      <div class="product">
+        <img
+          src="https://img.freepik.com/free-psd/elegant-pearl-diamond-earrings-exquisite-gold-jewelry_632498-25896.jpg?semt=ais_incoming"
+          alt=""
+        />
+        <h3>Pearl Halo Earing</h3>
+        <p>200</p>
+        <button class="arc" type="submit">Add to Cart</button><br />
+        <button class="sis" type="submit">Quick View</button>
+      </div>
+      <div class="product">
+        <img
+          src="https://img.freepik.com/free-psd/earrings-isolated-transparent-background_191095-27214.jpg?semt=ais_incoming"
+          alt=""
+        />
+        <h3>Sapphire Teardrop Earing</h3>
+        <p>300</p>
+        <button class="arc" type="submit">Add to Cart</button><br />
+        <button class="sis" type="submit">Quick View</button>
+      </div>
+      <div class="product">
+        <img
+          src="https://img.freepik.com/free-psd/earrings-isolated-transparent-background_191095-27275.jpg?semt=ais_incoming"
+          alt=""
+        />
+        <h3>Taditional Jhumka Earing</h3>
+        <p>400</p>
+        <button class="arc" type="submit">Add to Cart</button><br />
+        <button class="sis" type="submit">Quick View</button>
+      </div>
+    </div>
+    <div class="productlook">
+      <div class="product">
+        <img
+          src="https://img.freepik.com/premium-vector/wedding-jewelry-traditional-muslim-indian-vector-illustration-modern-floral-gem-fashion_870123-1408.jpg?ga=GA1.1.1693866615.1737566475&semt=ais_hybrid"
+          alt=""
+        />
+        <h3>Dangling Earing</h3>
+        <p>200</p>
+        <button class="arc" type="submit">Add to Cart</button><br />
+        <button class="sis" type="submit">Quick View</button>
+      </div>
+      <div class="product">
+        <img
+          src="https://icon2.cleanpng.com/20171221/tcw/avjbmcqjy.webp"
+          alt=""
+        />
+        <h3>Black and silver Earing</h3>
+        <p>300</p>
+        <button class="arc" type="submit">Add to Cart</button><br />
+        <button class="sis" type="submit">Quick View</button>
+      </div>
+      <div class="product">
+        <img
+          src="https://img.freepik.com/premium-vector/two-earrings-with-diamonds-transparent-background_1190923-3313.jpg?ga=GA1.1.1693866615.1737566475&semt=ais_hybrid"
+          alt=""
+        />
+        <h3>Chandelier Earing</h3>
+        <p>400</p>
+        <button class="arc" type="submit">Add to Cart</button><br />
+        <button class="sis" type="submit">Quick View</button>
+      </div>
+    </div>
+    <h1>Necklace</h1>
+    <div class="productlook">
+      <div class="product">
+        <img
+          src="https://negativeapparel.com/cdn/shop/files/1pc-18k-gold-plated-fashionable-personality-design-pendant-necklace-with-tassels-for-women-negative-apparel-396066.jpg?v=1720075374&width=360"
+          alt=""
+        />
+        <h3>Gold Platted Necklace</h3>
+        <p>200</p>
+        <button class="arc" type="submit">Add to Cart</button><br />
+        <button class="sis" type="submit">Quick View</button>
+      </div>
+      <div class="product">
+        <img
+          src="https://negativeapparel.com/cdn/shop/products/lock-cat-charm-layered-necklace-negative-apparel-509891.jpg?v=1710266954&width=990"
+          alt=""
+        />
+        <h3>Lock & Cat Charmed layered Necklace</h3>
+        <p>300</p>
+        <button class="arc" type="submit">Add to Cart</button><br />
+        <button class="sis" type="submit">Quick View</button>
+      </div>
+
+      <div class="product">
+        <img
+          src="https://negativeapparel.com/cdn/shop/products/2pcs-letter-detail-key-lock-charm-necklace-negative-apparel-933269.jpg?v=1710354649&width=990"
+          alt=""
+        />
+        <h3>lock Charm Necklace</h3>
+        <p>400</p>
+        <button class="arc" type="submit">Add to Cart</button><br />
+        <button class="sis" type="submit">Quick View</button>
+      </div>
+    </div>
+    <div class="productlook">
+      <div class="product">
+        <img
+          src="https://negativeapparel.com/cdn/shop/products/dazy-faux-pearl-charm-layered-necklace-negative-apparel-594423.jpg?v=1702131307&width=713"
+          alt=""
+        />
+        <h3>DAZY Faux Pearl Charm Layered Necklace</h3>
+        <p>200</p>
+        <button class="arc" type="submit">Add to Cart</button><br />
+        <button class="sis" type="submit">Quick View</button>
+      </div>
+      <div class="product">
+        <img
+          src="https://negativeapparel.com/cdn/shop/files/1pc-double-layer-faux-pearl-beaded-elegant-pendant-necklace-negative-apparel-758291.jpg?v=1714706960&width=990"
+          alt=""
+        />
+        <h3>Double Layer Faux Pearl Beaded Elegant Pendant Necklace</h3>
+        <p>300</p>
+        <button class="arc" type="submit">Add to Cart</button><br />
+        <button class="sis" type="submit">Quick View</button>
+      </div>
+      <div class="product">
+        <img
+          src="https://negativeapparel.com/cdn/shop/files/minimalist-metal-choker-negative-apparel-947370.jpg?v=1712106309&width=990"
+          alt=""
+        />
+        <h3>Minimalist Metal Choker</h3>
+        <p>400</p>
+        <button class="arc" type="submit">Add to Cart</button><br />
+        <button class="sis" type="submit">Quick View</button>
+      </div>
+    </div>
+    <h1>Bracelets</h1>
+    <div class="productlook">
+      <div class="product">
+        <img
+          src="https://negativeapparel.com/cdn/shop/products/dazy-faux-pearl-charm-layered-necklace-negative-apparel-594423.jpg?v=1702131307&width=713"
+          alt=""
+        />
+        <h3>DAZY Faux Pearl Charm Layered Necklace</h3>
+        <p>200</p>
+        <button class="arc" type="submit">Add to Cart</button><br />
+        <button class="sis" type="submit">Quick View</button>
+      </div>
+      <div class="product">
+        <img
+          src="https://negativeapparel.com/cdn/shop/files/1pc-double-layer-faux-pearl-beaded-elegant-pendant-necklace-negative-apparel-758291.jpg?v=1714706960&width=990"
+          alt=""
+        />
+        <h3>Double Layer Faux Pearl Beaded Elegant Pendant Necklace</h3>
+        <p>300</p>
+        <button class="arc" type="submit">Add to Cart</button><br />
+        <button class="sis" type="submit">Quick View</button>
+      </div>
+      <div class="product">
+        <img
+          src="https://negativeapparel.com/cdn/shop/files/minimalist-metal-choker-negative-apparel-947370.jpg?v=1712106309&width=990"
+          alt=""
+        />
+        <h3>Minimalist Metal Choker</h3>
+        <p>400</p>
+        <button class="arc" type="submit">Add to Cart</button><br />
+        <button class="sis" type="submit">Quick View</button>
+      </div>
+    </div>
+
+    <script>
+      function toggleMenu() {
+        const container = document.querySelector(".container");
+        container.classList.toggle("menu-active");
+      }
+    </script>
+  </body>
+</html>

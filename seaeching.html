@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: rgb(167, 186, 205);
+    }
+
+    h2 {
+        padding-top: 40px;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 27px;
+    }
+
+    input {
+        width: 90%;
+        padding: 10px;
+        border-radius: 20px;
+        border-color: blueviolet;
+        outline: none;
+        /* padding: 2px; */
+        margin-top: 30px;
+        margin-left: 50px;
+        font-size: 17px;
+    }
+
+    /* table tr td{
+        border: 2px solid rgb(48, 50, 45);
+    } */
+    #table {
+        width: 100%;
+        padding: 10px;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    td {
+        font-size: 20px;
+        padding: 20px;
+    }
+
+    #tr {
+        font-size: 22px;
+        font-weight: bold;
+    }
+    h2{
+        width: 20%;
+        border-radius: 20px;
+        /* padding-bottom: 30px; */
+        margin-top: 15px;
+        padding: 0px;
+        border: 2px solid gray;
+        text-align: center;
+        margin-left: 30rem;
+        box-shadow: 6px 6px 15px rgb(34, 57, 95);
+    }
+</style>
+
+<body>
+    <h2>Search</h2>
+    <input type="text" id="input" placeholder="Search By Name" onkeyup="search()">
+    <table id="table" border="1 " color="Black" cellspacing="0" cellpadding="15">
+        <tr id="tr">
+            <td>Name</td>
+            <td>Company</td>
+            <td>Destination</td>
+        </tr>
+        <tr>
+
+            <td>suleman khan</td>
+            <td>Alphinex</td>
+            <td>Hyderabad,PK.</td>
+        </tr>
+        <tr>
+            <td>Shabia Qazi</td>
+            <td>The City School</td>
+            <td>Hyderabad,PK.</td>
+        </tr>
+        <tr>
+            <td>Manzoor Ahmed</td>
+            <td>Net2Apps</td>
+            <td>Hyderabad,PK.</td>
+        </tr>
+        <tr>
+            <td>Bhagia Sheri</td>
+            <td>Bazar Technologies</td>
+            <td>Hyderabad,PK.</td>
+        </tr>
+        <tr>
+            <td>Mayam Rao</td>
+            <td>MUET</td>
+            <td>Hyderabad,PK.</td>
+        </tr>
+        <tr>
+            <td>Aftab ahmed</td>
+            <td>ZETSOL Technologies</td>
+            <td>Hyderabad,PK.</td>
+        </tr>
+        <tr>
+            <td>Sharique Khalid</td>
+            <td>NextApp</td>
+            <td>Hyderabad,PK.</td>
+        </tr>
+        <tr>
+            <td>Sadaf Khawaja</td>
+            <td>WaveteecPrivate</td>
+            <td>Karachi,PK.</td>
+        </tr>
+        <tr>
+            <td>Fyzah Hassan</td>
+            <td>Fitzen.com</td>
+            <td>Islamabad,Pk.</td>
+        </tr>
+        <tr>
+            <td>Maryam Rao</td>
+            <td> AMS Creative</td>
+            <td>Dubai,UAE.</td>
+        </tr>
+
+    </table>
+
+
+
+    <script>
+        function search() {
+
+            let sr = document.querySelector("input").value.toUpperCase();
+            let table = document.querySelector("table");
+            var tr = table.querySelectorAll("tr");
+
+          
+
+            for (var i = 0; i < tr.length; i++) {
+                let td = tr[i].getElementsByTagName("td")[0];
+            
+
+                if (td) {
+                    let text = td.textContent || td.innerHTML || td.innerText;
+
+                    if (text.toUpperCase().indexOf(sr) > -1) {
+                        tr[i].style.display = "block";
+                    }
+                    else {
+                        tr[i].style.display = "none";
+                    }
+                }
+
+            }
+
+
+
+        }
+
+    </script>
+</body>
+
+</html>

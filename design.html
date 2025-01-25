@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        .container {
+            background-color: #202229;
+            width: 18.40em;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 50%;
+            padding: 3em;
+            border-radius: 1em;
+            border-radius: 50%;
+
+        }
+
+        #colorBOX {
+            height: 200px;
+            width: 200px;
+            background-color: yellow;
+            box-shadow: 0 0 0 10px #202229, 0 0 0 15px #fff;
+            border-radius: 50%;
+        }
+
+        #inputBOX {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            outline: none;
+            border-radius: 7px;
+            position: absolute;
+            bottom: -60px;
+            margin-left: -40px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+
+        <div id="colorBOX"></div>
+        <input type="text" id="inputBOX" value="orange">
+
+    </div>
+
+
+    <script>
+
+        let inputBOX = document.getElementById("inputBOX");
+        let colorBOX = document.getElementById("colorBOX");
+
+        function colorCHANGE() {
+
+            let input = inputBOX.value;
+            colorBOX.style.backgroundColor = input;
+
+        }
+
+        inputBOX.addEventListener("input", colorCHANGE);
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+
+    .clock {
+        width: 480px;
+        height: 450px;
+        background-color: #274d60;
+        border-radius: 100%;
+        margin: 50px auto;
+        position: relative;
+        border: 4px solid rgba(8, 8, 9, 0.47);
+        box-shadow: 5px 5px 10px rgb(130, 130, 119), -5px -5px 10px rgb(82, 51, 51);
+
+    }
+
+    .sui {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .numbers div {
+        position: absolute;
+        font-size: 27px;
+        font-weight: bold;
+        color: lightgoldenrodyellow;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, .7);
+    }
+
+    .numb12 {
+        top: 6px;
+        left: 50%;
+        transform: translateX(-50%);
+
+    }
+
+    .numb11 {
+        top: 32px;
+        left: 28%;
+        transform: translateX(-50%);
+
+    }
+
+    .numb10 {
+        bottom: 300px;
+        left: 12%;
+        transform: translateX(-50%);
+
+    }
+
+
+    .numb9 {
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .numb8 {
+        left: 45px;
+        top: 75%;
+        transform: translateY(-50%);
+    }
+
+    .numb7 {
+        left: 115px;
+        top: 90%;
+        transform: translateY(-50%);
+    }
+
+    .numb6 {
+        bottom: 6px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .numb5 {
+        bottom: 28px;
+        left: 73%;
+        transform: translateX(-50%);
+    }
+
+    .numb4 {
+        bottom: 100px;
+        left: 90%;
+        transform: translateX(-50%);
+    }
+
+    .numb3 {
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .numb2 {
+        right: 35px;
+        bottom: 65%;
+        transform: translateY(-50%);
+    }
+
+    .numb1 {
+        right: 100px;
+        bottom: 86%;
+        transform: translateX(-50%);
+    }
+
+    .sui div {
+        width: 7px;
+        height: 120px;
+        background-color: white;
+        position: absolute;
+        bottom: 50%;
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .7);
+        border-radius: 50% 50% 0 0;
+        transform-origin: bottom center;
+        z-index: 4;
+
+    }
+
+    .sui .hour {
+        height: 70px;
+        transform: rotate(160deg);
+
+    }
+
+    .sui .second {
+        background-color: rgb(194, 185, 83);
+        /* color: black; */
+        transform: rotate(250deg);
+    }
+</style>
+
+
+<body>
+    <div class="clock">
+        <div class="numbers">
+            <div class="numb12">12</div>
+            <div class="numb11">11</div>
+            <div class="numb10">10</div>
+            <div class="numb9">9</div>
+            <div class="numb8">8</div>
+            <div class="numb7">7</div>
+            <div class="numb6">6</div>
+            <div class="numb5">5</div>
+            <div class="numb4">4</div>
+            <div class="numb3">3</div>
+            <div class="numb2">2</div>
+            <div class="numb1">1</div>
+        </div>
+        <div class="sui">
+            <div class="hour"></div>
+            <div class="minute"></div>
+            <div class="second"></div>
+        </div>
+    </div>
+
+    <script>
+        var hour = document.querySelector(".hour");
+        var minute = document.querySelector(".minute");
+        var Second = document.querySelector(".second");
+
+        function ME() {
+            var now = new Date();
+
+            var getSecond = now.getSeconds();
+            var getMinute = now.getMinutes();
+            var getHour = now.getHours();
+
+            var secondDegree = (getSecond / 60) * 360;
+            var minuteDegree = (getMinute / 60) * 360;
+            var hourDegree = (getHour / 12) * 360;
+
+            hour.style.transform = `rotate(${hourDegree}deg)`;
+            Second.style.transform = `rotate(${secondDegree}deg)`;
+            minute.style.transform = `rotate(${minuteDegree}deg)`;
+
+        }
+
+
+        setInterval(ME, 1000);
+
+    </script>
+</body>
+
+</html>

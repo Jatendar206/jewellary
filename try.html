@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: burlywood;
+        }
+
+
+        input {
+            border: 1px solid grey;
+            padding: 10px 16px;
+            border-radius: 20px;
+
+        }
+
+        span {
+            font-size: 22px;
+        }
+
+        main {
+            margin: 250px 400px;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <input type="Number" id="inch" placeholder="Inch"> <span>=</span>
+        <input type="Number" id="feet" placeholder="Feet">
+    </main>
+
+    <script>
+        var inch = document.querySelector("#inch")
+        var feet = document.querySelector("#feet")
+
+        function game() {
+            var i = inch.value;
+            f = i / 12;
+            feet.value = f
+        }
+        function rack() {
+            var f = feet.value;
+            i = f * 12;
+            inch.value = i;
+        }
+
+
+        inch.addEventListener('input', game)
+        feet.addEventListener('input', rack)
+
+
+    </script>
+</body>
+
+</html>

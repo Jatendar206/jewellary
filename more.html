@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0px;
+            box-sizing: border-box;
+            margin: 0px;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        button {
+            border-radius: 6px;
+            background-color: rgb(144, 239, 0);
+            color: black;
+            padding: 11px 24px;
+            font-size: 20px;
+            font-family: poppins;
+            font-weight: 600;
+            margin-left: 10px;
+            outline: none;
+            border: none;
+        }
+
+        button:active {
+            transform: scale(0.96);
+        }
+
+        img {
+            width: 250px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <img src="bulb-off.png" alt="">
+
+    <div class="buttons">
+        <button id="off">Off</button>
+        <button id="on">On</button>
+        <button id="toggle">Toggle</button>
+    </div>
+
+
+
+    <script>
+
+        var off = document.querySelector("#off")
+        var on = document.querySelector("#on")
+        var toggle = document.querySelector("#toggle")
+        var img = document.querySelector("img")
+
+        off.addEventListener('click', function () {
+            img.src = "bulb-off.png";
+        })
+
+        on.addEventListener('click', function () {
+            img.src = "bulb-on.png";
+        })
+
+        let LightOffHai = true;
+        toggle.addEventListener('click', function () {
+
+           
+            if (LightOffHai) {
+                img.src = "bulb-on.png";
+                LightOffHai = false;
+            } else {
+                img.src = "bulb-off.png";
+                LightOffHai = true;
+            }
+        })
+
+    </script>
+
+
+</body>
+
+</html>
